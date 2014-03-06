@@ -26,8 +26,9 @@ display _Play_LIST _LIST position delta = do
                                                                                        translate $ Vector3 x y z;
 											                                           angle_test (Attributes (x, y, z, w, r, d, c, (c_r,c_g,c_b))) delta _LIST;
 											                                           rotateCube (Attributes (x, y, z, w, r, d, c, (c_r,c_g,c_b)));
-																					   --cubeFrame 0.1;
-                                                                                       cube (0.08::GLfloat)) $ list
+                                                                                       cube (0.08::GLfloat) (Attributes (x, y, z, w, r, d, c, (c_r,c_g,c_b)));
+                                                                                       color $ Color3 (0.0::GLfloat) (0.0) (0.0); --(0.264::GLfloat) (0.304) (0.32)
+																					   cubeFrame (0.08::GLfloat)) $ list
   swapBuffers
   play _Play_LIST _LIST
 
@@ -39,7 +40,9 @@ play _Play_LIST _LIST = do
                 num_l = length list
 			in
 			if num_p < 2 then
-			     return ()
+			     --putStrLn $
+				   --show(num_p)
+				 return ()
 				 else
                       let (p1x, p1y, p1z) = (play_list !! 0)
                           (p2x, p2y, p2z) = (play_list !! 1)
@@ -74,9 +77,9 @@ search_wr (p1x, p1y, p1z) list num_l =
 							                  search_wr (p1x, p1y, p1z) list (num_l - 1)					   
 							   
 changeColor (Attributes (x, y, z, w, r, d, c, (c_r,c_g,c_b))) = do
-			if c == 1 then
-			   color $ Color4 c_r c_g c_b 1.0
-			   else if c == 2 then
+			   if c == 1 then
+			        color $ Color4 c_r c_g c_b 1.0
+					else if c == 2 then
 						color $ Color4 (1.0::GLfloat) 1.0 1.0 0.0
 						else
 				            color $ Color4 (1-(x+1)/4) (1-(y+1)/4) (1-(z+1)/4) 1.0

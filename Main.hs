@@ -25,7 +25,7 @@ main = do
   createWindow "Minesweeper_v0.1"
   reshapeCallback $= Just reshape
   --angle <- newIORef (0::GLfloat)
-  delta <- newIORef (10.0::GLfloat)
+  delta <- newIORef (2.0::GLfloat)
   position <- newIORef (0.0::GLfloat, 0.0)
   _LIST <- newIORef (init_color 36 (points 6)) --initialize the matrix as a list, the element of which is like (x, y, z,w) and the w is the state referring to whether the block is clicked.
   _Play_LIST <- newIORef ([])

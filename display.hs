@@ -37,7 +37,7 @@ play _Play_LIST _LIST = do
             list <- get _LIST
             let num_p = (length play_list)
                 num_l = length list
-			in
+            in
 			if num_p < 2 then
 			     return ()
 				 else
@@ -67,7 +67,7 @@ search_wr (p1x, p1y, p1z) list num_l =
 								else do
                                   let threshold = 0.005
                                       Attributes (lx, ly, lz, lw, lr, ld, lc, (lc_r,lc_g,lc_b)) = (list !! (num_l-1))
-							      in
+                                  in
 							          if ((p1x, p1y, p1z) <-*> (lx, ly, lz)) < threshold then
                                           (lx, ly, lz, lw, lr, ld, lc, (lc_r,lc_g,lc_b))
 							             else
